@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "tmi.js": "^1.8.5"
+  },
+  "name": "twitch-ghde",
+  "description": "Twitch chatbot that modifies GH WT DE ini file automatically given commands.",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iPolarisu/twitch-ghde.git"
+  },
+  "author": "ipolarisu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iPolarisu/twitch-ghde/issues"
+  },
+  "homepage": "https://github.com/iPolarisu/twitch-ghde#readme"
+}
