@@ -1,10 +1,9 @@
 {
-    "twitch": {
-        "token_endpoint": "https://id.twitch.tv/oauth2/token",
-        "username": "<chatBotUsername>",
-        "client_id":"<clientID>",
-        "client_secret":"<clientSecret>",
-        "authorization_code":"<AuthCode>",
-        "channel": "<channel_to_connect_to>"
-    }
+    "username": "username",
+    "password": "token",
+    "admin": "admin_username",
+    "channels": ["channel_name"],
+    "CHARACTERS_DIR": "D:/Games/Guitar Hero World Tour/DATA/MODS/Characters",
+    "INI_PATH": "D:/Documents/My Games/Guitar Hero World Tour Definitive Edition/GHWTDE.ini",
 }
+  
