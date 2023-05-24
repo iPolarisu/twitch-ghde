@@ -25,6 +25,7 @@ const characterDir = config.CHARACTERS_DIR;
 const iniDir = config.INI_PATH;
 
 // get characters
+
 const characters = fu.getDirectories(characterDir);
 
 // bools to know if a role has been requested
@@ -41,17 +42,24 @@ let bassPool = [];
 
 const client = tmi.client(opts);
 
+async function handleCurrentBandCommand(channel) {
+    try {
+      const bandMembers = await fu.getCurrentBand(iniDir);
+      client.say(channel, '[Band]');
+      for (let i = 0; i < 4; i++) {
+        client.say(channel, bandMembers[i]);
+      }
+    } catch (err) {
+      console.error('Error al obtener la banda actual:', err);
+    }
+}
+
 // handle user commands
 client.on('message', (channel, userstate, message, self) => {
 
     // get band members
     if (message == '!currentband') {
-
-        const band = fu.getCurrentBand();
-        client.say(channel, '[Band]');
-        for (let i = 0; i < 4; i++) {
-            client.say(channel, band[i]);
-        }
+        handleCurrentBandCommand(channel);
 
     // call for a new singer
     } else if (message == '!newsinger') {
@@ -134,7 +142,7 @@ client.on('message', (channel, userstate, message, self) => {
         if (singBool) {
             singBool = false;
             const singer = singPool[0];
-            updateRole(iniDir, 'PreferredSinger', singer);
+            fu.updateRole(iniDir, 'PreferredSinger', singer);
             const message = singer + ' has been chosen to sing by @' + userstate.username;
             client.say(channel, message);
         } else {
@@ -146,7 +154,7 @@ client.on('message', (channel, userstate, message, self) => {
         if (singBool) {
             singBool = false;
             const singer = singPool[1];
-            updateRole(iniDir, 'PreferredSinger', singer);
+            fu.updateRole(iniDir, 'PreferredSinger', singer);
             const message = singer + ' has been chosen to sing by @' + userstate.username;
             client.say(channel, message);
         } else {
@@ -158,7 +166,7 @@ client.on('message', (channel, userstate, message, self) => {
         if (singBool) {
             singBool = false;
             const singer = singPool[2];
-            updateRole(iniDir, 'PreferredSinger', singer);
+            fu.updateRole(iniDir, 'PreferredSinger', singer);
             const message = singer + ' has been chosen to sing by @' + userstate.username;
             client.say(channel, message);
         } else {
@@ -170,7 +178,7 @@ client.on('message', (channel, userstate, message, self) => {
         if (singBool) {
             singBool = false;
             const singer = singPool[3];
-            updateRole(iniDir, 'PreferredSinger', singer);
+            fu.updateRole(iniDir, 'PreferredSinger', singer);
             const message = singer + ' has been chosen to sing by @' + userstate.username;
             client.say(channel, message);
         } else {
@@ -182,7 +190,7 @@ client.on('message', (channel, userstate, message, self) => {
         if (drumsBool) {
             drumsBool = false;
             const drummer = drumsPool[0]; 
-            updateRole(iniDir, 'PreferredDrummer', drummer);
+            fu.updateRole(iniDir, 'PreferredDrummer', drummer);
             const message = drummer + ' has been chosen to play the drums by @' + userstate.username;
             client.say(channel, message);
         } else {
@@ -194,7 +202,7 @@ client.on('message', (channel, userstate, message, self) => {
         if (drumsBool) {
             drumsBool = false;
             const drummer = drumsPool[1];
-            updateRole(iniDir, 'PreferredDrummer', drummer);
+            fu.updateRole(iniDir, 'PreferredDrummer', drummer);
             const message = drummer + ' has been chosen to play the drums by @' + userstate.username;
             client.say(channel, message);
         } else {
@@ -206,7 +214,7 @@ client.on('message', (channel, userstate, message, self) => {
         if (drumsBool) {
             drumsBool = false;
             const drummer = drumsPool[2];
-            updateRole(iniDir, 'PreferredDrummer', drummer);
+            fu.updateRole(iniDir, 'PreferredDrummer', drummer);
             const message = drummer + ' has been chosen to play the drums by @' + userstate.username;
             client.say(channel, message);  
         } else {
@@ -218,7 +226,7 @@ client.on('message', (channel, userstate, message, self) => {
         if (drumsBool) {
             drumsBool = false;
             const drummer = drumsPool[3];
-            updateRole(iniDir, 'PreferredDrummer', drummer);
+            fu.updateRole(iniDir, 'PreferredDrummer', drummer);
             const message = drummer + ' has been chosen to play the drums by @' + userstate.username;
             client.say(channel, message);
         } else {
@@ -230,7 +238,7 @@ client.on('message', (channel, userstate, message, self) => {
         if (guitarBool) {
             guitarBool = false;
             const guitarist = guitarPool[0];
-            updateRole(iniDir, 'PreferredGuitarist', guitarist);
+            fu.updateRole(iniDir, 'PreferredGuitarist', guitarist);
             const message = guitarist + ' has been chosen to play the guitar by @' + userstate.username;
             client.say(channel, message);
         } else {
@@ -242,7 +250,7 @@ client.on('message', (channel, userstate, message, self) => {
         if (guitarBool) {
             guitarBool = false;
             const guitarist = guitarPool[1];
-            updateRole(iniDir, 'PreferredGuitarist', guitarist);
+            fu.updateRole(iniDir, 'PreferredGuitarist', guitarist);
             const message = guitarist + ' has been chosen to play the guitar by @' + userstate.username;
             client.say(channel, message);
         } else {
@@ -254,7 +262,7 @@ client.on('message', (channel, userstate, message, self) => {
         if (guitarBool) {
             guitarBool = false;
             const guitarist = guitarPool[2];
-            updateRole(iniDir, 'PreferredGuitarist', guitarist);
+            fu.updateRole(iniDir, 'PreferredGuitarist', guitarist);
             const message = guitarist + ' has been chosen to play the guitar by @' + userstate.username;
             client.say(channel, message);
         } else {
@@ -266,7 +274,7 @@ client.on('message', (channel, userstate, message, self) => {
         if (guitarBool) {
             guitarBool = false;
             const guitarist = guitarPool[3];
-            updateRole(iniDir, 'PreferredGuitarist', guitarist);
+            fu.updateRole(iniDir, 'PreferredGuitarist', guitarist);
             const message = guitarist + ' has been chosen to play the guitar by @' + userstate.username;
             client.say(channel, message);
         } else {
@@ -278,7 +286,7 @@ client.on('message', (channel, userstate, message, self) => {
         if (bassBool) {
             bassBool = false;
             const bassist = bassPool[0];
-            updateRole(iniDir, 'PreferredBassist', bassist);
+            fu.updateRole(iniDir, 'PreferredBassist', bassist);
             const message = bassist + ' has been chosen to play the bass by @' + userstate.username;
             client.say(channel, message);
         } else {
@@ -290,7 +298,7 @@ client.on('message', (channel, userstate, message, self) => {
         if (bassBool) {
             bassBool = false;
             const bassist = bassPool[1];
-            updateRole(iniDir, 'PreferredBassist', bassist);
+            fu.updateRole(iniDir, 'PreferredBassist', bassist);
             const message = bassist + ' has been chosen to play the bass by @' + userstate.username;
             client.say(channel, message);
         } else {
@@ -302,7 +310,7 @@ client.on('message', (channel, userstate, message, self) => {
         if (bassBool) {
             bassBool = false;
             const bassist = bassPool[2];
-            updateRole(iniDir, 'PreferredBassist', bassist);
+            fu.updateRole(iniDir, 'PreferredBassist', bassist);
             const message = bassist + ' has been chosen to play the bass by @' + userstate.username;
             client.say(channel, message);
         } else {
@@ -314,7 +322,7 @@ client.on('message', (channel, userstate, message, self) => {
         if (bassBool) {
             bassBool = false;
             const bassist = bassPool[3];
-            updateRole(iniDir, 'PreferredBassist', bassist);
+            fu.updateRole(iniDir, 'PreferredBassist', bassist);
             const message = bassist + ' has been chosen to play the bass by @' + userstate.username;
             client.say(channel, message);
         } else {
