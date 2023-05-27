@@ -100,7 +100,7 @@ The bot usage is currently simple and straightforward:
 # pick bassist number 2
 !bassist2
 # pick drummer number 4
-!drummer42
+!drummer4
 ```
 
 Example
