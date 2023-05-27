@@ -103,6 +103,10 @@ The bot usage is currently simple and straightforward:
 !drummer42
 ```
 
+Example
+
+![commands-example](https://i.ibb.co/c24pgjT/twitch-ghwtde-example.png)
+
 #### Recommendations
 
 To ensure a good experience, consider the following recommendations:
@@ -123,7 +127,6 @@ Feel free to fork this repository or create a pull request.
 
 ## TODOs
 
-- Add pictures with examples to README
 - Add new command to generate full bands
 - Extend support to more than one admin
 - Avoid duplication when selecting random characters (for one role)
